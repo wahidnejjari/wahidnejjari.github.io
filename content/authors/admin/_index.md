@@ -33,12 +33,10 @@ profiles:
     url: https://www.linkedin.com/in/wahidnejjari/
 
 languages:
-  - name: English
-    icon: 🇺🇸
-    percent: 🇺🇸
-  - name: French
-    icon: 🇫🇷
-    percent: 🇫🇷
+  - name: English 🇺🇸
+    percent: 100
+  - name: French 🇫🇷
+    percent: 100
 
 
 # Awards.
