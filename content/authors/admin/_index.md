@@ -35,8 +35,10 @@ profiles:
 languages:
   - name: English
     icon: 🇺🇸
+    percent: 🇺🇸
   - name: French
     icon: 🇫🇷
+    percent: 🇫🇷
 
 
 # Awards.
