@@ -46,21 +46,21 @@ languages:
 awards:
   - title: 'AWS Solution Architect - Associate'
     url: https://www.credly.com/badges/6e61ed97-9326-445e-863a-55036d744ba9?source=linked_in_profile
-    date: '2023-11-25'
+    date: '2023-06-01'
     awarder: AWS
     icon: 
     summary: |
       I proudly earned my AWS Certified Solutions Architect – Associate certification, demonstrating my expertise in designing and deploying scalable, highly available, and fault-tolerant systems on Amazon Web Services. This certification equipped me with the skills to effectively leverage AWS services, optimize cloud architecture, and implement best practices for security and cost management.
   - title: 'Chatbot Messenger and AI'
     url: https://www.youtube.com/watch?v=l_gf7G6vukI
-    date:
+    date: '2016-12-01'
     awarder: SNCF Connect
     icon: 
     summary: |
       I led the development of a conversational agent and Natural Language Processing (NLP) solution for Voyages-SNCF.com, a premier train travel booking platform. To kick off this initiative, I directed the integration of the bot with Facebook Messenger. Since the public launch of the Messenger Bot, we have seen a significant rise in user engagement. The conversational bot allows users to inquire about options directly within the chat and seamlessly book their train tickets by being redirected to the checkout page on voyages-sncf.com. This innovative search and booking experience resulted in an impressive 50% increase in bookings.
   - title: 'Microsoft Student Partner'
     url: 
-    date: 
+    date: '2010-10-01'
     awarder: Microsoft
     icon: 
     summary: |
