@@ -14,8 +14,8 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'A highly-customizable Hugo résumé theme powered by Hugo Blox Builder.'
-    twitter: 'GetResearchDev'
+    description: 'Wahid Nejjari Portfolio and online Resume'
+    twitter: ''
   analytics:
     google_analytics: ''
     baidu_tongji: ''
@@ -29,7 +29,7 @@ marketing:
 # Site header
 header:
   navbar:
-    enable: true
+    enable: false
     blox: floating-theme-toggler
 
 # Site footer
@@ -37,7 +37,7 @@ footer:
   copyright:
     notice: '© {year} Me. This work is licensed under {license}'
     license:
-      enable: true
+      enable: false
       allow_derivatives: false
       share_alike: true
       allow_commercial: false
