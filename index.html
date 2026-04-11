@@ -832,31 +832,24 @@ I am convinced that his passion for innovation and his skills will meet the expe
 </footer>
 
 <script>
-  // Dark mode toggle
   const toggle = document.getElementById('themeToggle');
-  const body = document.body;
-
-  // Priorité : choix manuel > préférence système
-  const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (stored === 'dark' || (!stored && prefersDark)) body.classList.add('dark');
 
   // Toggle manuel
   toggle.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    const isDark = body.classList.contains('dark');
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
     const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (isDark === systemDark) {
-      localStorage.removeItem('theme'); // revient au mode automatique
+      localStorage.removeItem('theme');
     } else {
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
   });
 
-  // Suit les changements système en temps réel (sauf si choix manuel)
+  // Suit les changements système en temps réel
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (!localStorage.getItem('theme')) {
-      body.classList.toggle('dark', e.matches);
+      document.body.classList.toggle('dark', e.matches);
     }
   });
 
@@ -874,5 +867,6 @@ I am convinced that his passion for innovation and his skills will meet the expe
     });
   });
 </script>
+
 </body>
 </html>
