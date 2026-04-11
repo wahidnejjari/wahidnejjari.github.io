@@ -601,7 +601,7 @@ footer a:hover { text-decoration: underline; }
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr44YpGz9irDp01hdLjKZv9rJ5KPD-EkNFiA&s"
           alt="Wahid Nejjari"
           onerror="this.src='https://ui-avatars.com/api/?name=WN&size=90&background=5b6cf6&color=fff&bold=true&rounded=true'">
-        <div class="sidebar-name"><a href="#">Wahid Nejjari</a></div>
+        <div class="sidebar-name">Wahid Nejjari</a></div>
         <div class="sidebar-role">Technical Program Manager</div>
         <a class="sidebar-cta" href="https://linkedin.com/in/wahidnejjari" target="_blank">Get In Touch</a>
 
@@ -613,6 +613,7 @@ footer a:hover { text-decoration: underline; }
 
       <nav class="sidebar-nav">
         <a href="#" class="active"><span class="nav-icon">🏠</span> Home</a>
+        <a href="#highlights"><span class="nav-icon">🔥</span> Highlights</a>
         <a href="#projects"><span class="nav-icon">🚀</span> Projects</a>
        <!-- <a href="#writing"><span class="nav-icon">✍️</span> Writing</a> -->
         <a href="#videos"><span class="nav-icon">🎬</span> Videos</a>
@@ -644,10 +645,10 @@ footer a:hover { text-decoration: underline; }
       </p>
     </div>
 
-    <!-- PORTFOLIO -->
-    <div class="section-card" id="projects">
+    <!-- Highlights -->
+    <div class="section-card" id="highlights">
       <div class="section-header">
-        <h2 class="section-title">Portfolio</h2>
+        <h2 class="section-title">Highlights</h2>
         <a class="view-all" href="https://linkedin.com/in/wahidnejjari">View all</a>
       </div>
 
@@ -680,6 +681,40 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
 
+         <!-- Projects -->
+    <div class="section-card" id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+      <div class="video-grid">
+
+        <div class="video-card">
+          <div class="video-thumb" onclick="window.open('https://animated-snail-ac7.notion.site/Pixigo-26b03733b85a803cb76dfd7eab63c469', '_blank')" style="cursor: pointer;">            
+            <img src="https://images.unsplash.com/photo-1587831991059-40958cea9ca5?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="iOS App : Pixigo">
+
+          </div>
+
+          <div class="video-info">
+            <div class="video-title">iOS App : Pixigo</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-thumb" onclick="window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank')" style="cursor: pointer;"> 
+
+            <img src="sql-quest.png" alt="SQL Quest">
+            <div class="video-play"></div>
+
+          </div>
+
+          <div class="video-info">
+            <div class="video-title">SQL Quest - Interactive Query Database Learning</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- TESTIMONIALS -->
     <div class="section-card">
       <h2 class="section-title">Testimonials</h2>
@@ -794,17 +829,33 @@ I am convinced that his passion for innovation and his skills will meet the expe
   const toggle = document.getElementById('themeToggle');
   const body = document.body;
 
-  if (localStorage.getItem('theme') === 'dark') body.classList.add('dark');
+  // Priorité : choix manuel > préférence système
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) body.classList.add('dark');
 
+  // Toggle manuel
   toggle.addEventListener('click', () => {
     body.classList.toggle('dark');
-    localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+    const isDark = body.classList.contains('dark');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDark === systemDark) {
+      localStorage.removeItem('theme'); // revient au mode automatique
+    } else {
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+  });
+
+  // Suit les changements système en temps réel (sauf si choix manuel)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+      body.classList.toggle('dark', e.matches);
+    }
   });
 
   // Active nav link on scroll
   const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.sidebar-nav a');
-
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(s => {
