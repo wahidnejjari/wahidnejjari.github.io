@@ -585,6 +585,13 @@ footer a:hover { text-decoration: underline; }
 </head>
 <body>
 
+<script>
+  // Detetct system theme preference and apply dark mode if needed
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) document.body.classList.add('dark');
+</script>
+
 <!-- COVER -->
 <div class="cover"> </div>
 
@@ -701,7 +708,7 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank')" style="cursor: pointer;"> 
+          <div class="video-thumb" onclick="window.open('https://sql-quest-liard.vercel.app/', '_blank')" style="cursor: pointer;"> 
 
             <img src="sql-quest.png" alt="SQL Quest">
             <div class="video-play"></div>
