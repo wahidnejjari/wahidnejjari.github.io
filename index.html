@@ -26,11 +26,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- Aptabase -->
+
 <script src="https://cdn.jsdelivr.net/npm/@aptabase/web/dist/index.global.js"></script>
 <script>
-  aptabase.init('A-EU-8650450118');
-  aptabase.trackEvent('page_view', { path: window.location.pathname });
+  window.addEventListener('load', function() {
+    aptabase.init('A-EU-8650450118');
+    aptabase.trackEvent('page_view', { path: window.location.pathname });
+  });
 </script>
+
+<!-- Styles -->
   
 <style>
 
