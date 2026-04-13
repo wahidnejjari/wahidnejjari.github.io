@@ -40,6 +40,20 @@ body {
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
+/* ── For title app conversations ── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ── COVER ── */
 .cover {
   width: 100%;
@@ -428,6 +442,7 @@ footer a:hover { text-decoration: underline; }
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (stored === 'dark' || (!stored && prefersDark)) document.body.classList.add('dark');
 </script>
+<h1 class="sr-only">Wahid Nejjari — Technical Program Manager</h1>
 
 <!-- COVER -->
 <div class="cover"></div>
