@@ -460,7 +460,7 @@ footer a:hover { text-decoration: underline; }
         <!-- Nom, rôle et CTA en dehors — ils restent fixes -->
         <div class="sidebar-name">Wahid Nejjari</div>
         <div class="sidebar-role">Technical Program Manager</div>
-        <a class="sidebar-cta" href="https://linkedin.com/in/wahidnejjari" target="_blank">Get In Touch</a>
+        <a class="sidebar-cta" href="https://linkedin.com/in/wahidnejjari" data-umami-event="Exit-CTA-GetInTouch" target="_blank">Get In Touch</a>
 
       </div>
 
@@ -468,13 +468,13 @@ footer a:hover { text-decoration: underline; }
         🤖 Staff Technical Program Manager · ⭐️ 12 years in AI, API & platform engineering · 💡 Built France's first conversational AI · 🚀 Recently relocated to Silicon Valley · ✨ Helping companies ship impactful products
       </div>
 
-      <nav class="sidebar-nav">
-        <a href="#" class="active"><span class="nav-icon">🏠</span> Home</a>
-        <a href="#highlights"><span class="nav-icon">🔥</span> Career Highlights</a>
-        <a href="#projects"><span class="nav-icon">🚀</span> Projects</a>
-        <a href="#videos"><span class="nav-icon">🎬</span> Videos</a>
-        <a href="https://linkedin.com/in/wahidnejjari" target="_blank"><span class="nav-icon">👨🏻‍💻</span> About</a>
-      </nav>
+<nav class="sidebar-nav">
+  <a href="#" class="active" data-umami-event="Nav-Home"><span class="nav-icon">🏠</span> Home</a>
+  <a href="#highlights" data-umami-event="Nav-Highlights"><span class="nav-icon">🔥</span> Career Highlights</a>
+  <a href="#projects" data-umami-event="Nav-Projects"><span class="nav-icon">🚀</span> Projects</a>
+  <a href="#videos" data-umami-event="Nav-Videos"><span class="nav-icon">🎬</span> Videos</a>
+  <a href="https://linkedin.com/in/wahidnejjari" target="_blank" data-umami-event="Exit-LinkedIn"><span class="nav-icon">👨🏻‍💻</span> About</a>
+</nav>
 
       <div class="sidebar-footer">
         <span>Dark mode</span>
@@ -546,7 +546,7 @@ footer a:hover { text-decoration: underline; }
       <div class="video-grid">
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://animated-snail-ac7.notion.site/Pixigo-26b03733b85a803cb76dfd7eab63c469', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Site-Pixigo'); window.open('https://animated-snail-ac7.notion.site/Pixigo-26b03733b85a803cb76dfd7eab63c469', '_blank')" style="cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1587831991059-40958cea9ca5?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0" alt="iOS App : Pixigo">
           </div>
           <div class="video-info">
@@ -555,7 +555,7 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://sql-quest-liard.vercel.app/', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Site-SQLQuest'); window.open('https://sql-quest-liard.vercel.app/', '_blank')" style="cursor: pointer;">
             <img src="sql-quest.png" alt="SQL Quest">
           </div>
           <div class="video-info">
@@ -640,7 +640,7 @@ footer a:hover { text-decoration: underline; }
       <div class="video-grid">
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://youtu.be/l_gf7G6vukI?si=cH4SygAwtYf00VVt', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Video-chatbot-SNCF'); window.open('https://youtu.be/l_gf7G6vukI?si=cH4SygAwtYf00VVt', '_blank')" style="cursor: pointer;">
             <img src="sncf-bot.png" alt="SNCF Chatbot demo">
             <div class="video-play"><div class="video-play-btn">▶</div></div>
           </div>
@@ -650,7 +650,7 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Video-VR-Booking'); window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank')" style="cursor: pointer;">
             <img src="https://numerique.sncf.com/wp-content/uploads/2024/07/SNCF-VIVATECH-22.05.24%C2%A9Maxime-Huriez-008-WEB-1.jpg" alt="VR SNCF Demo">
             <div class="video-play"><div class="video-play-btn">▶</div></div>
           </div>
