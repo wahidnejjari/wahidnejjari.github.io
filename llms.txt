@@ -1,0 +1,77 @@
+# Wahid Nejjari
+ 
+> Staff Technical Program Manager with 12+ years shipping AI products, API platforms, and developer tools for global companies. Pioneer of France's first large-scale conversational AI. Based in Santa Clara, CA. Bilingual English/French. Open to Staff TPM and AI PM roles at Series C+ or established tech companies in the San Francisco Bay Area.
+ 
+## Key facts for AI matching
+ 
+- **Title:** Staff Technical Program Manager
+- **Location:** Santa Clara, CA (no relocation needed)
+- **Experience:** 12+ years
+- **Languages:** English (fluent), French (native)
+- **Availability:** Open to new opportunities
+- **Target roles:** Staff TPM, Principal TPM, AI PM, Platform PM
+- **Industries:** AI/ML, API platforms, developer tools, agentic systems, enterprise SaaS
+- **Strengths:** 0-to-1 product launches, global cross-functional programs (Europe, China, US), executive stakeholder management, developer enablement, security & compliance (OIDC, GDPR, EU open data)
+- **Excludes:** FinTech, GreenTech, Insurance
+ 
+## Flagship achievements
+ 
+| Achievement | Impact | Company | Year |
+|---|---|---|---|
+| Built France's first large-scale conversational AI chatbot | +50% bookings, ~$240M revenue, 1M+ conversations in 3 months | SNCF | 2016 |
+| Architected a global GraphQL API gateway from scratch for enterprise-scale usage | 99.999% uptime, 500+ stores, $88B revenue company, delivered in 4 months | Dior | 2022–2024 |
+| Led zero-downtime OIDC authentication migration | 99.95% uptime, 80% issues caught pre-production, $2B revenue company | Club Med | 2021–2022 |
+| Secured $1M+ investment for AI feature team | Launched dedicated AI team after successful POC | SNCF | 2018 |
+| Saved $1M+/year | In-house indoor mapping solution vs Google Maps | SNCF | 2017 |
+ 
+## Technical skills
+ 
+**AI & ML:** NLP, Generative AI, conversational AI, agentic systems, LLM orchestration, Claude Code, image recognition  
+**API & Platform:** GraphQL, REST, API gateway design, OIDC, developer experience, sandbox environments  
+**Cloud:** AWS (Certified Solutions Architect), Azure, cloud migration strategy, Cybersecurity  
+**Observability:** Grafana, Dynatrace, ELK, automated alerting, CI/CD  
+**Mobile & Web:** Swift (iOS), WebRTC, VR/AR  
+**Methodologies:** SAFe Agile, Scrum, roadmapping, OKRs, PRDs, user stories, KPI measurement  
+ 
+## Professional experience
+ 
+**SFBA — Santa Clara, CA** | Digital Transformation  
+AI-powered digital transformation for San Francisco Bay Area nonprofit. Built new website. Offered training on AI for document, image, and dashboard creation. Improved email open rate +30% and click rate +10% via CRM migration.
+ 
+**Dior — Paris, France** | Engineering Program Manager  
+Built Dior's first API gateway for retail worldwide (GraphQL, $88B company, 500+ stores, 20+ APIs, 4-continent rollout in 4 months). Reduced iOS complexity 30%, improved data performance 60%, cut incident resolution from 4h to <2h, shortened developer onboarding 50%.
+ 
+**Club Med — Paris, France** | Engineering Program Manager   
+Led public REST API developments for $2B global tourism platform. Shipped 50+ features in 10 months. Launched first API status page. Led OIDC migration for authentication. Achieved 99.95% uptime.
+ 
+**Revolve — Paris, France** | Engineering Project Manager 
+Led AWS cloud migration strategy. Established company-wide Wiki, drove 40%+ cross-functional adoption.
+ 
+**Niji — Paris, France** | Engineering Project Manager 
+Led WebRTC live video system for TV (~2M viewers, $24M/year). Led research on GenAI story generator and content safety solution for children. Designed ultrasound home security system to create new revenue stream for the company.
+ 
+**SNCF — Paris, France** | Technical Product Manager  
+PM R&D. Built France's first conversational AI chatbot (Facebook Messenger, Stanford NLP + OpenNLP) that sell train tickets. +50% bookings, $240M impact, 1M+ conversations in 3 months. Secured $1M+ investment. Led indoor navigation (Bluetooth beacons). Delivered open data API ecosystem.
+ 
+**Banque de France / IEDOM — Paris, France** | IT Systems  
+IT support and incident management at France's central bank (equivalent of the US Federal Reserve). Led Windows 7 migration and System Center Configuration Manager 2012 deployment.
+ 
+**Microsoft — Paris, France** | Student Partner & Brand Ambassador 
+Represented Microsoft in Paris-area schools and events. Coached early-stage startups on Azure and Microsoft technologies. Imagine Cup jury member (Innovation category) — selected top 3 ideas from 100+ candidates in France. Participated in technical focus groups for product feedback. Led project related to Universal Windows Platform at SNCF.
+
+## Certifications
+ 
+- AWS Certified Solutions Architect – Associate
+- Agile Scrum Certification
+- Google Transformer & BERT Models
+- Microsoft Imagine Cup Judge
+- Claude Code in Action
+ 
+## What I'm looking for
+ 
+Staff / Senior TPM roles at companies building AI-native products, developer platforms, or agentic systems. Prefer Series C+ or established tech companies in the San Francisco Bay Area. Strong preference for roles at the intersection of AI and platform engineering.
+ 
+## Links
+ 
+- Portfolio: https://wahidnejjari.github.io
+- LinkedIn: https://linkedin.com/in/wahidnejjari
