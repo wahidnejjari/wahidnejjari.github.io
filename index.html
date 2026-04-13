@@ -3,14 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wahid Nejjari</title>
+<title>Wahid Nejjari - Leading Technical Products and Programs</title>
+<meta name="description" content="Wahid Nejjari is a Technical Program Manager with 12+ years of experience in AI, API platforms, and developer engineering. Based in Silicon Valley, Wahid leads the development and ships impactful products.">  
+<!-- Open Graph / LinkedIn / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wahidnejjari.github.io/">
+<meta property="og:title" content="Wahid Nejjari — Technical Program Manager">
+<meta property="og:description" content="Staff TPM with 12+ years in AI, API platforms & developer engineering. Based in Silicon Valley.">
+<meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr44YpGz9irDp01hdLjKZv9rJ5KPD-EkNFiA&s">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://wahidnejjari.github.io/">
+<meta name="twitter:title" content="Wahid Nejjari — Technical Program Manager">
+<meta name="twitter:description" content="Staff TPM with 12+ years in AI, API platforms & developer engineering. Based in Silicon Valley.">
+<meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr44YpGz9irDp01hdLjKZv9rJ5KPD-EkNFiA&s">
+<link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=2832&auto=format&fit=crop">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 
-/* ─────────────────────────────────────────
-   RESET & BASE
-───────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -25,28 +40,11 @@ body {
 img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 
-@media (max-width: 768px) {
-  .sidebar-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .sidebar-nav a {
-    text-align: center;
-  }
-}
-
-/* ─────────────────────────────────────────
-   COVER HEADER
-───────────────────────────────────────── */
+/* ── COVER ── */
 .cover {
   width: 100%;
   height: 320px;
-  background: #1a1a2e url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+  background: #1a1a2e url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=2832&auto=format&fit=crop') center/cover no-repeat;
   position: relative;
 }
 .cover::after {
@@ -55,21 +53,8 @@ a { text-decoration: none; color: inherit; }
   inset: 0;
   background: linear-gradient(to bottom, rgba(15,15,35,0.3) 0%, rgba(15,15,35,0.55) 100%);
 }
-.cover-logo {
-  position: absolute;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.06em;
-}
 
-/* ─────────────────────────────────────────
-   PAGE WRAPPER (sidebar + main)
-───────────────────────────────────────── */
+/* ── PAGE WRAPPER ── */
 .page {
   max-width: 1100px;
   margin: -80px auto 0;
@@ -82,13 +67,8 @@ a { text-decoration: none; color: inherit; }
   z-index: 2;
 }
 
-/* ─────────────────────────────────────────
-   SIDEBAR
-───────────────────────────────────────── */
-.sidebar {
-  position: sticky;
-  top: 24px;
-}
+/* ── SIDEBAR ── */
+.sidebar { position: sticky; top: 24px; }
 
 .sidebar-card {
   background: #fff;
@@ -97,9 +77,39 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
 }
 
-.sidebar-avatar-wrap {
+/* Conteneur centré pour avatar + textes fixes */
+.sidebar-profile {
   padding: 28px 28px 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── AVATAR SPIN : UNIQUEMENT la photo ── */
+.sidebar-avatar-wrap {
+  width: 98px;
+  height: 98px;
+  border-radius: 50%;
+  padding: 4px;
+
+background: conic-gradient(
+  #ffffff 0deg,
+  #ffffff 280deg,
+  #bbdbff 310deg,
+  #bbdbff 330deg,
+  #cee5ff 350deg,
+  #ffffff 360deg
+);
+
+  animation: spinBorder 2.5s linear infinite;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+@keyframes spinBorder {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .sidebar-avatar {
@@ -107,14 +117,19 @@ a { text-decoration: none; color: inherit; }
   height: 90px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #fff;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  margin: 0 auto 14px;
   display: block;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  animation: counterSpin 2.5s linear infinite;
 }
 
+@keyframes counterSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* Nom, rôle, CTA — fixes, hors du wrapper animé */
 .sidebar-name {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 4px;
@@ -122,7 +137,7 @@ a { text-decoration: none; color: inherit; }
 .sidebar-name a:hover { color: #5b6cf6; }
 
 .sidebar-role {
-  font-size: 13px;
+  font-size: 15px;
   color: #888;
   font-weight: 500;
   margin-bottom: 16px;
@@ -137,7 +152,6 @@ a { text-decoration: none; color: inherit; }
   padding: 9px 22px;
   border-radius: 30px;
   transition: background 0.2s, transform 0.15s;
-  margin-bottom: 4px;
 }
 .sidebar-cta:hover { background: #4451d4; transform: translateY(-1px); }
 
@@ -151,9 +165,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* NAV */
-.sidebar-nav {
-  border-top: 1px solid #f0f0f0;
-}
+.sidebar-nav { border-top: 1px solid #f0f0f0; }
 .sidebar-nav a {
   display: flex;
   align-items: center;
@@ -173,7 +185,7 @@ a { text-decoration: none; color: inherit; }
 }
 .sidebar-nav a span.nav-icon { font-size: 16px; }
 
-/* DARK MODE TOGGLE */
+/* TOGGLE */
 .sidebar-footer {
   border-top: 1px solid #f0f0f0;
   padding: 14px 24px;
@@ -183,12 +195,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 12px;
   color: #aaa;
 }
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
+.theme-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; }
 .toggle-track {
   width: 36px; height: 20px;
   background: #ddd;
@@ -208,9 +215,7 @@ a { text-decoration: none; color: inherit; }
 body.dark .toggle-track { background: #5b6cf6; }
 body.dark .toggle-thumb { transform: translateX(16px); }
 
-/* ─────────────────────────────────────────
-   DARK MODE
-───────────────────────────────────────── */
+/* ── DARK MODE ── */
 body.dark { background: #141420; color: #ddd; }
 body.dark .sidebar-card { background: #1e1e30; box-shadow: 0 4px 24px rgba(0,0,0,.4); }
 body.dark .sidebar-name { color: #eee; }
@@ -220,26 +225,27 @@ body.dark .sidebar-nav a { color: #bbb; }
 body.dark .sidebar-nav a:hover, body.dark .sidebar-nav a.active { background: #252538; color: #818cf8; border-left-color: #818cf8; }
 body.dark .sidebar-footer { border-top-color: #2a2a40; color: #666; }
 body.dark .section-card { background: #1e1e30; box-shadow: 0 2px 16px rgba(0,0,0,.3); }
+body.dark .hero-card { background: #1e1e30; box-shadow: 0 2px 16px rgba(0,0,0,.3); }
+body.dark .hero-intro { color: #888; }
 body.dark .section-title { color: #eee; border-bottom-color: #2a2a40; }
-body.dark .post-title a, body.dark .proj-title a { color: #c7d2fe; }
-body.dark .post-meta, body.dark .post-excerpt, body.dark .proj-excerpt, body.dark .testi-text { color: #888; }
-body.dark .post-tag { background: #252538; color: #818cf8; }
+body.dark .proj-title a { color: #c7d2fe; }
+body.dark .proj-excerpt { color: #888; }
+body.dark .testi-text { color: #888; }
 body.dark .testi-author-name { color: #ddd; }
 body.dark .testi-author-role { color: #666; }
-body.dark .video-card, body.dark .gallery-album { background: #252538; }
-body.dark .video-title, body.dark .album-title a { color: #c7d2fe; }
+body.dark .testi-avatar { border-color: #333; }
+body.dark .testi-divider { border-top-color: #2a2a40; }
+body.dark .video-card { background: #252538; }
+body.dark .video-title { color: #c7d2fe; }
+body.dark .video-thumb { background: #2a2a40; }
 body.dark .nl-box { background: #1e1e30; }
 body.dark .nl-box h2 { color: #eee; }
 body.dark .nl-input { background: #252538; border-color: #333; color: #ddd; }
 body.dark footer { background: #0f0f1a; color: #555; border-top-color: #1e1e30; }
-body.dark .cover-logo { color: #fff; }
 body.dark .view-all { color: #818cf8; }
-body.dark .proj-placeholder, body.dark .video-thumb, body.dark .gallery-photo { background: #2a2a40; }
-body.dark .section-subtitle { color: #666; }
+body.dark .proj-placeholder { background: #2a2a40; }
 
-/* ─────────────────────────────────────────
-   MAIN CONTENT
-───────────────────────────────────────── */
+/* ── MAIN ── */
 .main { display: flex; flex-direction: column; gap: 28px; }
 
 .section-card {
@@ -278,30 +284,18 @@ body.dark .section-subtitle { color: #666; }
 }
 .view-all:hover { opacity: 0.7; }
 
-/* ─────────────────────────────────────────
-   HERO / ABOUT CARD
-───────────────────────────────────────── */
+/* ── HERO ── */
 .hero-card {
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.07);
   padding: 32px;
+  padding-top: 20px;
 }
-body.dark .hero-card { background: #1e1e30; box-shadow: 0 2px 16px rgba(0,0,0,.3); }
+.hero-intro { font-size: 15px; line-height: 1.8; color: #555; }
 
-.hero-intro {
-  font-size: 15px;
-  line-height: 1.8;
-  color: #555;
-}
-body.dark .hero-intro { color: #888; }
-
-/* ─────────────────────────────────────────
-   PORTFOLIO / PROJECTS
-───────────────────────────────────────── */
+/* ── PROJECTS / HIGHLIGHTS ── */
 .proj-list { display: flex; flex-direction: column; gap: 28px; }
-
-.proj-item {}
 
 .proj-placeholder {
   width: 100%;
@@ -318,30 +312,15 @@ body.dark .hero-intro { color: #888; }
 }
 .proj-item:hover .proj-placeholder img { transform: scale(1.03); }
 
-.proj-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
+.proj-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
 .proj-title a:hover { color: #5b6cf6; }
 .proj-excerpt { font-size: 14px; color: #666; line-height: 1.7; }
 
-/* ─────────────────────────────────────────
-   TESTIMONIALS
-───────────────────────────────────────── */
+/* ── TESTIMONIALS ── */
 .testi-list { display: flex; flex-direction: column; gap: 28px; }
-
 .testi-item { display: flex; flex-direction: column; gap: 14px; }
-
-.testi-text {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.75;
-  font-style: italic;
-}
-
+.testi-text { font-size: 15px; color: #555; line-height: 1.75; font-style: italic; }
 .testi-author { display: flex; align-items: center; gap: 14px; }
-
 .testi-avatar {
   width: 48px; height: 48px;
   border-radius: 50%;
@@ -349,78 +328,16 @@ body.dark .hero-intro { color: #888; }
   border: 2px solid #eee;
   flex-shrink: 0;
 }
-body.dark .testi-avatar { border-color: #333; }
-
 .testi-author-name { font-size: 15px; font-weight: 700; color: #222; }
 .testi-author-role { font-size: 13px; color: #888; }
+.testi-divider { border: none; border-top: 1px solid #f0f0f0; margin: 0; }
 
-.testi-divider {
-  border: none;
-  border-top: 1px solid #f0f0f0;
-  margin: 0;
-}
-body.dark .testi-divider { border-top-color: #2a2a40; }
-
-/* ─────────────────────────────────────────
-   BLOG / WRITING
-───────────────────────────────────────── */
-.post-list { display: flex; flex-direction: column; gap: 0; }
-
-.post-item {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid #f0f0f0;
-  align-items: start;
-}
-.post-item:first-child { padding-top: 0; }
-.post-item:last-child { border-bottom: none; padding-bottom: 0; }
-body.dark .post-item { border-bottom-color: #2a2a40; }
-
-.post-thumb {
-  width: 160px; height: 110px;
-  border-radius: 8px;
-  background: #f0f0f5;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.post-thumb img { width: 100%; height: 100%; object-fit: cover; }
-
-.post-tag {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 600;
-  background: #eef0ff;
-  color: #5b6cf6;
-  padding: 2px 10px;
-  border-radius: 20px;
-  margin-bottom: 7px;
-  letter-spacing: .03em;
-}
-.post-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 5px;
-  line-height: 1.35;
-}
-.post-title a:hover { color: #5b6cf6; }
-.post-meta {
-  font-size: 12px;
-  color: #aaa;
-  margin-bottom: 7px;
-}
-.post-excerpt { font-size: 13px; color: #666; line-height: 1.65; }
-
-/* ─────────────────────────────────────────
-   VIDEOS
-───────────────────────────────────────── */
+/* ── VIDEO / PROJECT GRID ── */
 .video-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-
 .video-card {
   background: #f7f7fa;
   border-radius: 10px;
@@ -428,7 +345,6 @@ body.dark .post-item { border-bottom-color: #2a2a40; }
   transition: transform .2s, box-shadow .2s;
 }
 .video-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
-
 .video-thumb {
   width: 100%; height: 140px;
   background: #e0e0ea;
@@ -437,11 +353,8 @@ body.dark .post-item { border-bottom-color: #2a2a40; }
 }
 .video-thumb img { width: 100%; height: 100%; object-fit: cover; }
 .video-play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
   background: rgba(0,0,0,.25);
 }
 .video-play-btn {
@@ -455,41 +368,7 @@ body.dark .post-item { border-bottom-color: #2a2a40; }
 .video-info { padding: 12px 14px; }
 .video-title { font-size: 14px; font-weight: 600; color: #222; line-height: 1.4; }
 
-/* ─────────────────────────────────────────
-   GALLERY
-───────────────────────────────────────── */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.gallery-album {}
-
-.gallery-photos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.gallery-photo {
-  height: 100px;
-  background: #e8e8f0;
-  overflow: hidden;
-}
-.gallery-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-.album-meta { display: flex; justify-content: space-between; align-items: center; }
-.album-title { font-size: 14px; font-weight: 700; }
-.album-title a:hover { color: #5b6cf6; }
-.album-year { font-size: 12px; color: #aaa; }
-
-/* ─────────────────────────────────────────
-   NEWSLETTER
-───────────────────────────────────────── */
+/* ── NEWSLETTER ── */
 .nl-box {
   background: #fff;
   border-radius: 16px;
@@ -497,88 +376,47 @@ body.dark .post-item { border-bottom-color: #2a2a40; }
   padding: 32px;
   text-align: center;
 }
-.nl-box h2 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #1a1a1a;
-}
-.nl-box p {
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 20px;
-}
-.nl-form {
-  display: flex;
-  gap: 10px;
-  max-width: 400px;
-  margin: 0 auto;
-}
+.nl-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
+.nl-box p { font-size: 14px; color: #888; margin-bottom: 20px; }
+.nl-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
 .nl-input {
-  flex: 1;
-  padding: 10px 16px;
-  border: 1px solid #e0e0e0;
-  border-radius: 30px;
-  font-size: 14px;
-  font-family: 'Nunito', sans-serif;
-  outline: none;
+  flex: 1; padding: 10px 16px;
+  border: 1px solid #e0e0e0; border-radius: 30px;
+  font-size: 14px; font-family: 'Nunito', sans-serif;
+  outline: none; background: #fff; color: #222;
   transition: border-color .2s;
-  background: #fff;
-  color: #222;
 }
 .nl-input:focus { border-color: #5b6cf6; }
 .nl-submit {
-  background: #5b6cf6;
-  color: #fff;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 30px;
-  font-size: 14px;
-  font-weight: 600;
+  background: #5b6cf6; color: #fff; border: none;
+  padding: 10px 24px; border-radius: 30px;
+  font-size: 14px; font-weight: 600;
   font-family: 'Nunito', sans-serif;
-  cursor: pointer;
+  cursor: pointer; white-space: nowrap;
   transition: background .2s, transform .15s;
-  white-space: nowrap;
 }
 .nl-submit:hover { background: #4451d4; transform: translateY(-1px); }
 
-/* ─────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────── */
+/* ── FOOTER ── */
 footer {
-  text-align: center;
-  padding: 24px 20px;
-  font-size: 13px;
-  color: #aaa;
+  text-align: center; padding: 24px 20px;
+  font-size: 13px; color: #aaa;
   border-top: 1px solid #f0f0f0;
   background: #fafafa;
 }
 footer a { color: #5b6cf6; }
 footer a:hover { text-decoration: underline; }
 
-/* ─────────────────────────────────────────
-   RESPONSIVE
-───────────────────────────────────────── */
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .cover { height: 200px; }
-  .page {
-    grid-template-columns: 1fr;
-    margin-top: -40px;
-  }
+  .page { grid-template-columns: 1fr; margin-top: -40px; }
   .sidebar { position: static; }
-  .post-item { grid-template-columns: 1fr; }
-  .post-thumb { width: 100%; height: 180px; }
-  .video-grid, .gallery-grid { grid-template-columns: 1fr; }
-}
-
-/* ─────────────────────────────────────────
-   UTILITY
-───────────────────────────────────────── */
-.section-subtitle {
-  font-size: 13px;
-  color: #aaa;
-  margin-top: -18px;
-  margin-bottom: 20px;
+  .video-grid { grid-template-columns: 1fr; }
+  .sidebar-nav {
+    display: flex; flex-direction: row;
+    justify-content: center; flex-wrap: wrap; gap: 4px;
+  }
 }
 
 </style>
@@ -586,14 +424,13 @@ footer a:hover { text-decoration: underline; }
 <body>
 
 <script>
-  // Detetct system theme preference and apply dark mode if needed
   const stored = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if (stored === 'dark' || (!stored && prefersDark)) document.body.classList.add('dark');
 </script>
 
 <!-- COVER -->
-<div class="cover"> </div>
+<div class="cover"></div>
 
 <!-- PAGE -->
 <div class="page">
@@ -602,13 +439,19 @@ footer a:hover { text-decoration: underline; }
   <aside class="sidebar">
     <div class="sidebar-card">
 
-      <div class="sidebar-avatar-wrap">
-        <img
-          class="sidebar-avatar"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr44YpGz9irDp01hdLjKZv9rJ5KPD-EkNFiA&s"
-          alt="Wahid Nejjari"
-          onerror="this.src='https://ui-avatars.com/api/?name=WN&size=90&background=5b6cf6&color=fff&bold=true&rounded=true'">
-        <div class="sidebar-name">Wahid Nejjari</a></div>
+      <div class="sidebar-profile">
+
+        <!-- Seule la photo est dans le wrapper animé -->
+        <div class="sidebar-avatar-wrap">
+          <img
+            class="sidebar-avatar"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr44YpGz9irDp01hdLjKZv9rJ5KPD-EkNFiA&s"
+            alt="Wahid Nejjari"
+            onerror="this.src='https://ui-avatars.com/api/?name=WN&size=90&background=5b6cf6&color=fff&bold=true&rounded=true'">
+        </div>
+
+        <!-- Nom, rôle et CTA en dehors — ils restent fixes -->
+        <div class="sidebar-name">Wahid Nejjari</div>
         <div class="sidebar-role">Technical Program Manager</div>
         <a class="sidebar-cta" href="https://linkedin.com/in/wahidnejjari" target="_blank">Get In Touch</a>
 
@@ -622,9 +465,7 @@ footer a:hover { text-decoration: underline; }
         <a href="#" class="active"><span class="nav-icon">🏠</span> Home</a>
         <a href="#highlights"><span class="nav-icon">🔥</span> Career Highlights</a>
         <a href="#projects"><span class="nav-icon">🚀</span> Projects</a>
-       <!-- <a href="#writing"><span class="nav-icon">✍️</span> Writing</a> -->
         <a href="#videos"><span class="nav-icon">🎬</span> Videos</a>
-       <!--  <a href="#gallery"><span class="nav-icon">📷</span> Gallery</a> -->
         <a href="https://linkedin.com/in/wahidnejjari" target="_blank"><span class="nav-icon">👨🏻‍💻</span> About</a>
       </nav>
 
@@ -643,16 +484,17 @@ footer a:hover { text-decoration: underline; }
 
     <!-- HERO BIO -->
     <div class="hero-card">
+      <h2 class=".hero--title-intro">👋🏻 Hi !</h2>
       <p class="hero-intro">
         I'm a Technical Program Manager with 12+ years of experience at the intersection of AI, API platforms, and developer engineering.
-        <br><br> 
-        I led the development of <strong>France's first large-scale conversational AI at SNCF (Facebook Messenger, NLP)</strong>, architected Dior's global API gateway, and drove a zero-downtime OIDC migration at Club Med covering millions of users. 
+        <br><br>
+        I led the development of <strong>France's first large-scale conversational AI at SNCF (Facebook Messenger, NLP)</strong>, architected Dior's global API gateway, and drove a zero-downtime OIDC migration at Club Med covering millions of users.
         <br><br>
         Now based in Santa Clara, CA, I partner with engineering teams and leadership to build platforms that scale <strong>and beyond</strong>.
       </p>
     </div>
 
-    <!-- Career Highlights -->
+    <!-- CAREER HIGHLIGHTS -->
     <div class="section-card" id="highlights">
       <div class="section-header">
         <h2 class="section-title">Career Highlights</h2>
@@ -666,29 +508,29 @@ footer a:hover { text-decoration: underline; }
             <img src="https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5c9278e7264c83d3718b45a5" alt="SNCF AI Chatbot">
           </div>
           <h3 class="proj-title"><a href="https://www.youtube.com/watch?v=l_gf7G6vukI" target="_blank">France's first conversational AI — SNCF</a></h3>
-          <p class="proj-excerpt">Led the design and delivery of the <strong>first large-scale NLP chatbot in France for Voyages-SNCF.com</strong>. Integrated with Facebook Messenger using Stanford NLP + OpenNLP, enabling users to search and book train tickets directly in chat. Launched December 2016, <strong>resulting in a 50% increase in bookings and about 240M€ in revenue.</strong> </p>
+          <p class="proj-excerpt">Led the design and delivery of the <strong>first large-scale NLP chatbot in France for Voyages-SNCF.com</strong>. Integrated with Facebook Messenger using Stanford NLP + OpenNLP, enabling users to search and book train tickets directly in chat. Launched December 2016, <strong>resulting in a 50% increase in bookings and about 240M€ in revenue.</strong></p>
         </div>
 
         <div class="proj-item">
           <div class="proj-placeholder">
-            <img src="https://images.unsplash.com/photo-1730818874987-15dd95f7f0de?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dior API Gateway">
+            <img src="https://images.unsplash.com/photo-1730818874987-15dd95f7f0de?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Dior API Gateway">
           </div>
           <h3 class="proj-title"><a href="https://www.dior.com/en_us/fashion" target="_blank">Global API gateway architecture — Dior</a></h3>
-          <p class="proj-excerpt"><strong>Managed the development and architected the enterprise GraphQL API gateway that powers Dior's retail across the world.</strong> Delivered it worldwide within 4 months while managing concurrent deployments across Europe and China. Enhanced data retrieval performance by 60% by optimizing query resolution and caching strategies</p>
+          <p class="proj-excerpt"><strong>Managed the development and architected the enterprise GraphQL API gateway that powers Dior's retail across the world.</strong> Delivered it worldwide within 4 months while managing concurrent deployments across Europe and China. Enhanced data retrieval performance by 60% by optimizing query resolution and caching strategies.</p>
         </div>
 
         <div class="proj-item">
           <div class="proj-placeholder">
-            <img src="https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEyfHxhdXRoZW50aWNhdGlvbnxlbnwwfDB8MHx8fDI%3D" alt="Club Med OIDC Migration">
+            <img src="https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Club Med OIDC Migration">
           </div>
           <h3 class="proj-title"><a href="https://www.clubmed.us/" target="_blank">Zero-downtime OIDC migration — Club Med</a></h3>
-          <p class="proj-excerpt"><strong>Managed the development and maintenance of the public REST API infrastructure for global tourism leader.</strong> Unified authentication, covering millins of users employees and customers. A full cross-functional program spanning security, engineering, QA, and stakeholder management across multiple countries.</p>
+          <p class="proj-excerpt"><strong>Managed the development and maintenance of the public REST API infrastructure for global tourism leader.</strong> Unified authentication covering millions of users, employees and customers. A full cross-functional program spanning security, engineering, QA, and stakeholder management across multiple countries.</p>
         </div>
 
       </div>
     </div>
 
-         <!-- Projects -->
+    <!-- PROJECTS -->
     <div class="section-card" id="projects">
       <div class="section-header">
         <h2 class="section-title">Projects</h2>
@@ -697,31 +539,26 @@ footer a:hover { text-decoration: underline; }
       <div class="video-grid">
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://animated-snail-ac7.notion.site/Pixigo-26b03733b85a803cb76dfd7eab63c469', '_blank')" style="cursor: pointer;">            
-            <img src="https://images.unsplash.com/photo-1587831991059-40958cea9ca5?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="iOS App : Pixigo">
-
+          <div class="video-thumb" onclick="window.open('https://animated-snail-ac7.notion.site/Pixigo-26b03733b85a803cb76dfd7eab63c469', '_blank')" style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1587831991059-40958cea9ca5?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0" alt="iOS App : Pixigo">
           </div>
-
           <div class="video-info">
             <div class="video-title">iOS App : Pixigo</div>
           </div>
         </div>
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://sql-quest-liard.vercel.app/', '_blank')" style="cursor: pointer;"> 
-
+          <div class="video-thumb" onclick="window.open('https://sql-quest-liard.vercel.app/', '_blank')" style="cursor: pointer;">
             <img src="sql-quest.png" alt="SQL Quest">
-            <div class="video-play"></div>
-
           </div>
-
           <div class="video-info">
             <div class="video-title">SQL Quest - Interactive Query Database Learning</div>
           </div>
         </div>
+
       </div>
     </div>
-    
+
     <!-- TESTIMONIALS -->
     <div class="section-card">
       <h2 class="section-title">Testimonials</h2>
@@ -732,9 +569,9 @@ footer a:hover { text-decoration: underline; }
           <p class="testi-text">Wahid successfully led the build and run phases of the seller experience API ensuring high standards of observability and maintenance. He also adeptly managed and animated the consumer ecosystem, particularly the iOS users, in a highly complex environment. His technical expertise, coupled with a strong ability to navigate and resolve challenges, has significantly contributed to our project's success. I am confident that he will bring the same level of excellence and professionalism to any future endeavor.</p>
           <div class="testi-author">
             <img class="testi-avatar"
-                src="https://launchdarkly.com/static/96d33db93010837d649cb6927edf2774/5c8f1/4b437f45-9ae7-4231-82bb-75e610d1610a_Fabien-GASSER.jpg"
-                onerror="this.src='https://ui-avatars.com/api/?name=Fabien+G&size=48&background=e0e7ff&color=5b6cf6&bold=true&rounded=true'"
-                alt="Fabien G">
+              src="https://launchdarkly.com/static/96d33db93010837d649cb6927edf2774/5c8f1/4b437f45-9ae7-4231-82bb-75e610d1610a_Fabien-GASSER.jpg"
+              onerror="this.src='https://ui-avatars.com/api/?name=Fabien+G&size=48&background=e0e7ff&color=5b6cf6&bold=true&rounded=true'"
+              alt="Fabien G">
             <div>
               <div class="testi-author-name">Fabien G.</div>
               <div class="testi-author-role">Lead System Architect - Retail & Events experience · Dior</div>
@@ -755,14 +592,12 @@ footer a:hover { text-decoration: underline; }
           </div>
         </div>
 
-         <hr class="testi-divider">
+        <hr class="testi-divider">
 
         <div class="testi-item">
-          <p class="testi-text">I had the pleasure of working with Wahid on the Innovation team at Voyages-sncf.com.
-Wahid is a curious person, always on the lookout for technological developments. His proactivity and pragmatism as a product owner enabled us to carry out numerous proofs of concept and foster innovation within the delivery teams.
-I am convinced that his passion for innovation and his skills will meet the expectations of many companies.</p>
+          <p class="testi-text">I had the pleasure of working with Wahid on the Innovation team at Voyages-sncf.com. Wahid is a curious person, always on the lookout for technological developments. His proactivity and pragmatism as a product owner enabled us to carry out numerous proofs of concept and foster innovation within the delivery teams. I am convinced that his passion for innovation and his skills will meet the expectations of many companies.</p>
           <div class="testi-author">
-            <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Amaury+B&size=48&background=e0e7ff&color=0369a1&bold=true&rounded=true" alt="Amaury W.">
+            <img class="testi-avatar" src="https://ui-avatars.com/api/?name=Amaury+W&size=48&background=e0e7ff&color=0369a1&bold=true&rounded=true" alt="Amaury W.">
             <div>
               <div class="testi-author-name">Amaury W.</div>
               <div class="testi-author-role">Domain Architect · Accor</div>
@@ -775,10 +610,10 @@ I am convinced that his passion for innovation and his skills will meet the expe
         <div class="testi-item">
           <p class="testi-text">Wahid is a co-worker who you can trust when it comes to management of projects with a high degree of technique. Enthusiastic about new technologies, not only he makes sure to fully understand and improve the tools he uses, but also he is dedicated to identify the best of their usage. He contributed to the innovation team with his technical abilities, as well as his curiosity and his will for sharing.</p>
           <div class="testi-author">
-            <img class="testi-avatar" 
-                src="https://images.squarespace-cdn.com/content/v1/61027c9f87d3327595f8e2c5/ad301b78-94e0-4409-a956-694b41e3a31c/Cynthia+%281%29.jpg
-                onerror="this.src='https://ui-avatars.com/api/?name=Cynthia+G&size=48&background=fce7f3&color=be185d&bold=true&rounded=true'"
-                alt="Cynthia G.">
+            <img class="testi-avatar"
+              src="https://images.squarespace-cdn.com/content/v1/61027c9f87d3327595f8e2c5/ad301b78-94e0-4409-a956-694b41e3a31c/Cynthia+%281%29.jpg"
+              onerror="this.src='https://ui-avatars.com/api/?name=Cynthia+G&size=48&background=fce7f3&color=be185d&bold=true&rounded=true'"
+              alt="Cynthia G.">
             <div>
               <div class="testi-author-name">Cynthia G.</div>
               <div class="testi-author-role">Head of Innovation · RTM</div>
@@ -798,20 +633,17 @@ I am convinced that his passion for innovation and his skills will meet the expe
       <div class="video-grid">
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://youtu.be/l_gf7G6vukI?si=cH4SygAwtYf00VVt', '_blank')" style="cursor: pointer;">            
+          <div class="video-thumb" onclick="window.open('https://youtu.be/l_gf7G6vukI?si=cH4SygAwtYf00VVt', '_blank')" style="cursor: pointer;">
             <img src="sncf-bot.png" alt="SNCF Chatbot demo">
-            <div class="video-play"><div class="video-play-btn">▶</div>
-          
+            <div class="video-play"><div class="video-play-btn">▶</div></div>
           </div>
-          </div>
-
           <div class="video-info">
             <div class="video-title">SNCF Messenger Bot — Demo (2017)</div>
           </div>
         </div>
 
         <div class="video-card">
-          <div class="video-thumb" onclick="window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank')" style="cursor: pointer;">            
+          <div class="video-thumb" onclick="window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank')" style="cursor: pointer;">
             <img src="https://numerique.sncf.com/wp-content/uploads/2024/07/SNCF-VIVATECH-22.05.24%C2%A9Maxime-Huriez-008-WEB-1.jpg" alt="VR SNCF Demo">
             <div class="video-play"><div class="video-play-btn">▶</div></div>
           </div>
@@ -834,7 +666,6 @@ I am convinced that his passion for innovation and his skills will meet the expe
 <script>
   const toggle = document.getElementById('themeToggle');
 
-  // Toggle manuel
   toggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     const isDark = document.body.classList.contains('dark');
@@ -846,14 +677,12 @@ I am convinced that his passion for innovation and his skills will meet the expe
     }
   });
 
-  // Suit les changements système en temps réel
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
     if (!localStorage.getItem('theme')) {
       document.body.classList.toggle('dark', e.matches);
     }
   });
 
-  // Active nav link on scroll
   const sections = document.querySelectorAll('[id]');
   const navLinks = document.querySelectorAll('.sidebar-nav a');
   window.addEventListener('scroll', () => {
