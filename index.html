@@ -25,25 +25,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Aptabase -->
+<!-- Umami -->
 
-<script>
-  fetch('https://api.aptabase.com/v0/event', {
-    method: 'POST',
-    headers: {
-      'App-Key': 'A-EU-8650450118',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      timestamp: new Date().toISOString(),
-      eventName: 'page_view',
-      props: {
-        path: window.location.pathname,
-        referrer: document.referrer || 'direct'
-      }
-    })
-  });
-</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="94d8c43b-4175-4daf-8e81-9093e439153e"></script>
 
 <!-- Styles -->
   
