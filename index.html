@@ -375,35 +375,6 @@ body.dark .proj-placeholder { background: #2a2a40; }
 .video-info { padding: 12px 14px; }
 .video-title { font-size: 14px; font-weight: 600; color: #222; line-height: 1.4; }
 
-/* ── NEWSLETTER ── */
-.nl-box {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 2px 16px rgba(0,0,0,.07);
-  padding: 32px;
-  text-align: center;
-}
-.nl-box h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
-.nl-box p { font-size: 14px; color: #888; margin-bottom: 20px; }
-.nl-form { display: flex; gap: 10px; max-width: 400px; margin: 0 auto; }
-.nl-input {
-  flex: 1; padding: 10px 16px;
-  border: 1px solid #e0e0e0; border-radius: 30px;
-  font-size: 14px; font-family: 'Nunito', sans-serif;
-  outline: none; background: #fff; color: #222;
-  transition: border-color .2s;
-}
-.nl-input:focus { border-color: #5b6cf6; }
-.nl-submit {
-  background: #5b6cf6; color: #fff; border: none;
-  padding: 10px 24px; border-radius: 30px;
-  font-size: 14px; font-weight: 600;
-  font-family: 'Nunito', sans-serif;
-  cursor: pointer; white-space: nowrap;
-  transition: background .2s, transform .15s;
-}
-.nl-submit:hover { background: #4451d4; transform: translateY(-1px); }
-
 /* ── FOOTER ── */
 footer {
   text-align: center; padding: 24px 20px;
@@ -546,7 +517,7 @@ footer a:hover { text-decoration: underline; }
       <div class="video-grid">
 
         <div class="video-card">
-          <div class="video-thumb" onclick="umami.track('Exit-Site-Pixigo'); window.open('https://animated-snail-ac7.notion.site/Pixigo-26b03733b85a803cb76dfd7eab63c469', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Site-Pixigo'); window.open('https://animated-snail-ac7.notion.site/Pixigo-26b03733b85a803cb76dfd7eab63c469', '_blank', 'noopener noreferrer')" style="cursor: pointer;">
             <img src="https://images.unsplash.com/photo-1587831991059-40958cea9ca5?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0" alt="iOS App : Pixigo">
           </div>
           <div class="video-info">
@@ -555,7 +526,7 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="video-card">
-          <div class="video-thumb" onclick="umami.track('Exit-Site-SQLQuest'); window.open('https://sql-quest-liard.vercel.app/', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Site-SQLQuest'); window.open('https://sql-quest-liard.vercel.app/', '_blank', 'noopener noreferrer')" style="cursor: pointer;">
             <img src="sql-quest.png" alt="SQL Quest">
           </div>
           <div class="video-info">
@@ -640,7 +611,7 @@ footer a:hover { text-decoration: underline; }
       <div class="video-grid">
 
         <div class="video-card">
-          <div class="video-thumb" onclick="umami.track('Exit-Video-chatbot-SNCF'); window.open('https://youtu.be/l_gf7G6vukI?si=cH4SygAwtYf00VVt', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Video-chatbot-SNCF'); window.open('https://youtu.be/l_gf7G6vukI?si=cH4SygAwtYf00VVt', '_blank', 'noopener noreferrer')" style="cursor: pointer;">
             <img src="sncf-bot.png" alt="SNCF Chatbot demo">
             <div class="video-play"><div class="video-play-btn">▶</div></div>
           </div>
@@ -650,7 +621,7 @@ footer a:hover { text-decoration: underline; }
         </div>
 
         <div class="video-card">
-          <div class="video-thumb" onclick="umami.track('Exit-Video-VR-Booking'); window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank')" style="cursor: pointer;">
+          <div class="video-thumb" onclick="umami.track('Exit-Video-VR-Booking'); window.open('https://www.youtube.com/watch?v=5nhNjbSBl6s', '_blank', 'noopener noreferrer')" style="cursor: pointer;">
             <img src="https://numerique.sncf.com/wp-content/uploads/2024/07/SNCF-VIVATECH-22.05.24%C2%A9Maxime-Huriez-008-WEB-1.jpg" alt="VR SNCF Demo">
             <div class="video-play"><div class="video-play-btn">▶</div></div>
           </div>
