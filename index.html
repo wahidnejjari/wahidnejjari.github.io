@@ -323,6 +323,318 @@ body.dark .proj-placeholder { background: #2a2a40; }
 .proj-title a:hover { color: #5b6cf6; }
 .proj-excerpt { font-size: 14px; color: #666; line-height: 1.7; }
 
+/* ──────────────────────────────────────────────────────────
+   STACK NAVIGATION — Career Highlights detail panel
+   ────────────────────────────────────────────────────────── */
+
+/* Le conteneur des highlights devient le "stage" de l'animation */
+.highlights-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  /* isolation + translateZ forcent un nouveau compositing layer
+     ce qui garantit le clipping des enfants transform/absolute
+     (bug WebKit avec border-radius + overflow:hidden) */
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
+/* La liste — calque de base */
+.highlights-list {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   500ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter    500ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+/* Le panneau de détail — calque qui glisse depuis la droite */
+.detail-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 2;
+  transform: translateX(100%);
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: -12px 0 32px rgba(0, 0, 0, 0.12);
+  will-change: transform;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* État actif : une classe sur le stage commande les deux calques */
+.highlights-stage.is-viewing-project .highlights-list {
+  transform: translateX(-20%);
+  opacity: 0.4;
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+.highlights-stage.is-viewing-project .detail-panel {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Items cliquables avec feedback */
+.proj-item.proj-item-clickable {
+  cursor: pointer;
+  padding: 16px;
+  margin: -16px;
+  border-radius: 12px;
+  transition: background 0.2s, transform 0.2s;
+}
+.proj-item.proj-item-clickable:hover {
+  background: #f7f7ff;
+  transform: translateX(2px);
+}
+body.dark .proj-item.proj-item-clickable:hover { background: #252538; }
+
+/* Indicateur "clic pour détails" - apparaît en bas de l'item au hover */
+.proj-item.proj-item-clickable .proj-excerpt::after {
+  content: '→';
+  display: block;
+  margin-top: 15px;
+  color: #5b6cf6;
+  font-weight: 700;
+  font-size: 18px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.proj-item.proj-item-clickable:hover .proj-excerpt::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── PANNEAU DE DÉTAIL — HEADER STICKY (glassmorphism) ── */
+.detail-header {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  padding: 16px 32px;
+  border-bottom: 1px solid #eee;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+body.dark .detail-header {
+  background: rgba(30, 30, 48, 0.92);
+  border-bottom-color: #2a2a40;
+}
+
+.detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f0f2ff;
+  border: 1px solid #e0e4ff;
+  color: #5b6cf6;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 24px;
+  transition: background 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 1px 3px rgba(91, 108, 246, 0.08);
+}
+.detail-back:hover {
+  background: #5b6cf6;
+  color: #fff;
+  transform: translateX(-2px);
+  box-shadow: 0 4px 12px rgba(91, 108, 246, 0.25);
+}
+body.dark .detail-back {
+  background: #252538;
+  border-color: #2a2a40;
+  color: #818cf8;
+}
+body.dark .detail-back:hover {
+  background: #5b6cf6;
+  color: #fff;
+}
+
+.detail-back-arrow {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+.detail-back:hover .detail-back-arrow {
+  transform: translateX(-2px);
+}
+
+/* ── PANNEAU DE DÉTAIL — BODY ── */
+.detail-body { padding: 0 32px 32px; }
+
+.detail-hero-img {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px 0 24px;
+}
+.detail-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+body.dark .detail-title { color: #eee; }
+
+.detail-subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.detail-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.detail-stat {
+  background: #f7f7fa;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+}
+body.dark .detail-stat {
+  background: #252538;
+  border-color: #2a2a40;
+}
+.detail-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #5b6cf6;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+body.dark .detail-stat-value { color: #818cf8; }
+.detail-stat-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.detail-section { margin-bottom: 24px; }
+.detail-section h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+body.dark .detail-section h3 { color: #eee; }
+.detail-section p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+body.dark .detail-section p { color: #bbb; }
+.detail-section ul {
+  list-style: none;
+  padding: 0;
+}
+.detail-section li {
+  font-size: 14px;
+  color: #555;
+  padding: 6px 0 6px 24px;
+  position: relative;
+  line-height: 1.6;
+}
+body.dark .detail-section li { color: #bbb; }
+.detail-section li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #5b6cf6;
+  font-weight: 700;
+}
+
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.detail-tag {
+  background: #f0f2ff;
+  color: #5b6cf6;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+body.dark .detail-tag {
+  background: #252538;
+  color: #c7d2fe;
+}
+
+.detail-external {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #5b6cf6;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+.detail-external:hover {
+  background: #4451d4;
+  transform: translateY(-1px);
+  color: #fff;
+}
+
+/* Dark mode du panneau */
+body.dark .detail-panel { background: #1e1e30; }
+
+/* Respect des préférences utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  .highlights-list, .detail-panel, .highlights-stage {
+    transition-duration: 0ms !important;
+  }
+}
+
+/* Mobile : adaptations */
+@media (max-width: 768px) {
+  .highlights-stage.is-viewing-project .highlights-list {
+    transform: translateX(-10%);
+  }
+  .detail-stats { grid-template-columns: 1fr; }
+  .detail-header { padding: 14px 20px; }
+  .detail-body { padding: 0 20px 24px; }
+}
+
 /* ── TESTIMONIALS ── */
 .testi-list { display: flex; flex-direction: column; gap: 28px; }
 .testi-item { display: flex; flex-direction: column; gap: 14px; }
@@ -479,31 +791,50 @@ footer a:hover { text-decoration: underline; }
         <a class="view-all" href="https://www.linkedin.com/in/wahidnejjari/details/experience/" target="_blank" rel="noopener noreferrer" data-umami-event="Link-View-All">View all</a>
       </div>
 
-      <div class="proj-list">
+      <!-- ⬇️ STAGE : contient les deux calques (liste + détail) -->
+      <div class="highlights-stage" id="highlightsStage">
 
-        <div class="proj-item">
-          <div class="proj-placeholder">
-            <img src="https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5c9278e7264c83d3718b45a5" alt="SNCF AI Chatbot">
+        <!-- CALQUE 1 : la liste -->
+        <div class="highlights-list">
+          <div class="proj-list">
+
+            <div class="proj-item proj-item-clickable" data-project="sncf" role="button" tabindex="0" aria-label="View SNCF project details">
+              <div class="proj-placeholder">
+                <img src="https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5c9278e7264c83d3718b45a5" alt="SNCF AI Chatbot">
+              </div>
+              <h3 class="proj-title">France's first conversational AI — SNCF</h3>
+              <p class="proj-excerpt">Led the design and delivery of the <strong>first large-scale NLP chatbot in France for Voyages-SNCF.com</strong>. Integrated with Facebook Messenger using Stanford NLP + OpenNLP, enabling users to search and book train tickets directly in chat. Launched December 2016, <strong>resulting in a 50% increase in bookings and about 240M€ in revenue.</strong></p>
+            </div>
+
+            <div class="proj-item proj-item-clickable" data-project="dior" role="button" tabindex="0" aria-label="View Dior project details">
+              <div class="proj-placeholder">
+                <img src="https://images.unsplash.com/photo-1730818874987-15dd95f7f0de?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Dior API Gateway">
+              </div>
+              <h3 class="proj-title">Global API gateway architecture — Dior</h3>
+              <p class="proj-excerpt"><strong>Managed the development and architected the enterprise GraphQL API gateway that powers Dior's retail across the world.</strong> Delivered it worldwide within 4 months while managing concurrent deployments across Europe and China. Enhanced data retrieval performance by 60% by optimizing query resolution and caching strategies.</p>
+            </div>
+
+            <div class="proj-item proj-item-clickable" data-project="clubmed" role="button" tabindex="0" aria-label="View Club Med project details">
+              <div class="proj-placeholder">
+                <img src="https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Club Med OIDC Migration">
+              </div>
+              <h3 class="proj-title">Zero-downtime OIDC migration — Club Med</h3>
+              <p class="proj-excerpt"><strong>Managed the development and maintenance of the public REST API infrastructure for global tourism leader.</strong> Unified authentication covering millions of users, employees and customers. A full cross-functional program spanning security, engineering, QA, and stakeholder management across multiple countries.</p>
+            </div>
+
           </div>
-          <h3 class="proj-title"><a href="https://www.youtube.com/watch?v=l_gf7G6vukI" target="_blank" rel="noopener noreferrer" data-umami-event="Exit-Highlights-VideoSNCF-ChatBot">France's first conversational AI — SNCF</a></h3>
-          <p class="proj-excerpt">Led the design and delivery of the <strong>first large-scale NLP chatbot in France for Voyages-SNCF.com</strong>. Integrated with Facebook Messenger using Stanford NLP + OpenNLP, enabling users to search and book train tickets directly in chat. Launched December 2016, <strong>resulting in a 50% increase in bookings and about 240M€ in revenue.</strong></p>
         </div>
 
-        <div class="proj-item">
-          <div class="proj-placeholder">
-            <img src="https://images.unsplash.com/photo-1730818874987-15dd95f7f0de?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Dior API Gateway">
+        <!-- CALQUE 2 : le panneau de détail (rempli en JS) -->
+        <aside class="detail-panel" id="detailPanel" aria-hidden="true">
+          <div class="detail-header">
+            <button class="detail-back" id="detailBack" aria-label="Back to highlights">
+              <span class="detail-back-arrow">←</span>
+              <span>Back to highlights</span>
+            </button>
           </div>
-          <h3 class="proj-title"><a href="https://www.dior.com/en_us/fashion" target="_blank" rel="noopener noreferrer" data-umami-event="Exit-Highlights-Dior">Global API gateway architecture — Dior</a></h3>
-          <p class="proj-excerpt"><strong>Managed the development and architected the enterprise GraphQL API gateway that powers Dior's retail across the world.</strong> Delivered it worldwide within 4 months while managing concurrent deployments across Europe and China. Enhanced data retrieval performance by 60% by optimizing query resolution and caching strategies.</p>
-        </div>
-
-        <div class="proj-item">
-          <div class="proj-placeholder">
-            <img src="https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0" alt="Club Med OIDC Migration">
-          </div>
-          <h3 class="proj-title"><a href="https://www.clubmed.us/" target="_blank" data-umami-event="Exit-Highlights-ClubMed">Zero-downtime OIDC migration — Club Med</a></h3>
-          <p class="proj-excerpt"><strong>Managed the development and maintenance of the public REST API infrastructure for global tourism leader.</strong> Unified authentication covering millions of users, employees and customers. A full cross-functional program spanning security, engineering, QA, and stakeholder management across multiple countries.</p>
-        </div>
+          <div class="detail-body" id="detailBody"></div>
+        </aside>
 
       </div>
     </div>
@@ -661,17 +992,215 @@ footer a:hover { text-decoration: underline; }
     }
   });
 
-  const sections = document.querySelectorAll('[id]');
-  const navLinks = document.querySelectorAll('.sidebar-nav a');
-  window.addEventListener('scroll', () => {
+  // Scroll spy : surligne le lien de nav correspondant à la section visible.
+  // On cible UNIQUEMENT les sections référencées par les liens de la nav,
+  // pour éviter que des id internes (highlightsStage, detailPanel, etc.)
+  // perturbent la détection.
+  const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
+  const navTargets = Array.from(navLinks)
+    .map(a => {
+      const id = a.getAttribute('href').slice(1);
+      return id ? document.getElementById(id) : null;
+    })
+    .filter(Boolean);
+
+  function updateActiveNav() {
     let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
-    });
+
+    // Cas 1 : on est tout en haut → Home
+    if (window.scrollY < 100) {
+      const homeLink = document.querySelector('.sidebar-nav a[href="#"], .sidebar-nav a[href="#home"]');
+      navLinks.forEach(a => a.classList.remove('active'));
+      if (homeLink) homeLink.classList.add('active');
+      return;
+    }
+
+    // Cas 2 : on est tout en bas → on force la dernière section.
+    // Nécessaire car la dernière section peut commencer après la zone
+    // de scroll maximale atteignable (typique en bas de page).
+    const scrolledToBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (scrolledToBottom && navTargets.length > 0) {
+      current = navTargets[navTargets.length - 1].id;
+    } else {
+      // Cas 3 : détection normale par offsetTop
+      navTargets.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+    }
+
     navLinks.forEach(a => {
       a.classList.remove('active');
       if (a.getAttribute('href') === '#' + current) a.classList.add('active');
     });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
+
+  // ─────────────────────────────────────────────────────────
+  //  STACK NAVIGATION — Career Highlights detail panel
+  // ─────────────────────────────────────────────────────────
+
+  const PROJECTS = {
+    sncf: {
+      title: "France's first conversational AI",
+      subtitle: "SNCF · Voyages-SNCF.com · 2016",
+      image: "https://images.lanouvellerepublique.fr/image/upload/t_1020w/f_auto/5c9278e7264c83d3718b45a5",
+      stats: [
+        { value: "1M+", label: "Conversations" },
+        { value: "+50%", label: "Bookings uplift" },
+        { value: "~240M€", label: "Revenue impact" }
+      ],
+      context: "In 2016, SNCF wanted to reach travelers where they already were — in messaging apps. As Product Owner on the Innovation team, I led the design and delivery of France's first large-scale NLP chatbot, launched on Facebook Messenger right as conversational commerce was emerging.",
+      role: "Product Owner & technical lead for the conversational AI initiative. Owned the roadmap, partnered with NLP engineers, and coordinated delivery across Innovation, Platform, and Booking squads.",
+      highlights: [
+        "Architected the NLP pipeline combining Stanford NLP + OpenNLP for intent detection and entity extraction (origin, destination, date, passengers)",
+        "Designed conversational flows that let users search, compare and book train tickets end-to-end without leaving Messenger",
+        "Launched in December 2016 — one of the first production-grade travel bots in Europe",
+        "Drove a ~50% increase in bookings on the channel and contributed to an estimated ~240M€ in revenue",
+        "Shared learnings publicly via tech talks and press coverage"
+      ],
+      tags: ["NLP", "Conversational AI", "Product Ownership", "Facebook Messenger", "Stanford NLP", "OpenNLP", "Innovation"],
+      link: { url: "https://www.youtube.com/watch?v=l_gf7G6vukI", label: "Watch the demo ↗", umami: "Exit-Highlights-VideoSNCF-ChatBot" }
+    },
+
+    dior: {
+      title: "Global API gateway architecture",
+      subtitle: "Dior · Retail & Omnichannel Platform",
+      image: "https://images.unsplash.com/photo-1730818874987-15dd95f7f0de?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0",
+      stats: [
+        { value: "500+", label: "Global stores" },
+        { value: "99.999%", label: "Uptime SLA" },
+        { value: "+60%", label: "Query performance" }
+      ],
+      context: "Dior needed a single, unified API layer to power its omnichannel retail experience — in-store tablets, mobile apps, e-commerce, and back-office tools — across hundreds of boutiques in Europe, Asia, and the Americas.",
+      role: "Technical Program Manager for the enterprise GraphQL API gateway. Owned cross-functional delivery across architecture, platform engineering, retail tech, and regional IT teams.",
+      highlights: [
+        "Architected a federated GraphQL gateway unifying dozens of downstream services (catalog, inventory, CRM, pricing, orders)",
+        "Delivered worldwide rollout in 4 months, with concurrent deployments across Europe and China",
+        "Boosted data retrieval performance by 60% via query resolution optimization and smart caching",
+        "Maintained 99.999% uptime SLA across retail-critical endpoints during peak seasons",
+        "Built observability dashboards and incident playbooks for 24/7 retail operations"
+      ],
+      tags: ["GraphQL", "API Gateway", "Enterprise Architecture", "Retail Tech", "Observability", "TPM", "Global Rollout"],
+      link: { url: "https://www.dior.com/en_us/fashion", label: "Visit Dior ↗", umami: "Exit-Highlights-Dior" }
+    },
+
+    clubmed: {
+      title: "Zero-downtime OIDC migration",
+      subtitle: "Club Med · Identity & Public API Platform",
+      image: "https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0",
+      stats: [
+        { value: "0", label: "Seconds downtime" },
+        { value: "Millions", label: "Users migrated" },
+        { value: "Multi-country", label: "Scope" }
+      ],
+      context: "Club Med's public REST API powers the booking experience for millions of travelers, employees and partners across dozens of countries. The existing authentication stack needed to migrate to a modern OIDC-based identity model — without breaking a single active session.",
+      role: "Technical Program Manager owning the end-to-end migration program. Coordinated security, engineering, QA, and regional stakeholders across a multi-country rollout.",
+      highlights: [
+        "Led the migration to unified OIDC authentication covering millions of users, employees, and customers",
+        "Delivered zero downtime across the cutover — all active sessions preserved through a dual-stack strategy",
+        "Coordinated a cross-functional program spanning security, platform, QA, mobile, and partner teams",
+        "Managed stakeholder alignment across multiple countries and business lines",
+        "Put the public REST API infrastructure on a modern, standards-based identity foundation"
+      ],
+      tags: ["OIDC", "Identity", "Public API", "Security", "Zero-downtime migration", "TPM", "Cross-functional"],
+      link: { url: "https://www.clubmed.us/", label: "Visit Club Med ↗", umami: "Exit-Highlights-ClubMed" }
+    }
+  };
+
+  const stage = document.getElementById('highlightsStage');
+  const panel = document.getElementById('detailPanel');
+  const panelBody = document.getElementById('detailBody');
+  const backBtn = document.getElementById('detailBack');
+  const items = document.querySelectorAll('.proj-item[data-project]');
+  const list = stage.querySelector('.highlights-list');
+
+  function renderDetail(project) {
+    const statsHtml = project.stats.map(s => `
+      <div class="detail-stat">
+        <div class="detail-stat-value">${s.value}</div>
+        <div class="detail-stat-label">${s.label}</div>
+      </div>
+    `).join('');
+
+    const highlightsHtml = project.highlights.map(h => `<li>${h}</li>`).join('');
+    const tagsHtml = project.tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
+    const linkHtml = project.link
+      ? `<a class="detail-external" href="${project.link.url}" target="_blank" rel="noopener noreferrer"${project.link.umami ? ` data-umami-event="${project.link.umami}"` : ''}>${project.link.label}</a>`
+      : '';
+
+    return `
+      <div class="detail-hero-img">
+        <img src="${project.image}" alt="${project.title}">
+      </div>
+      <h2 class="detail-title">${project.title}</h2>
+      <div class="detail-subtitle">${project.subtitle}</div>
+
+      <div class="detail-stats">${statsHtml}</div>
+
+      <div class="detail-section">
+        <h3>Context</h3>
+        <p>${project.context}</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>My role</h3>
+        <p>${project.role}</p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Key contributions</h3>
+        <ul>${highlightsHtml}</ul>
+      </div>
+
+      <div class="detail-section">
+        <h3>Stack & skills</h3>
+        <div class="detail-tags">${tagsHtml}</div>
+      </div>
+
+      ${linkHtml}
+    `;
+  }
+
+  function openProject(key) {
+    const project = PROJECTS[key];
+    if (!project) return;
+    // Verrouiller la hauteur du stage à celle actuelle de la liste,
+    // pour que le bloc ne se redimensionne pas à l'ouverture du panneau
+    stage.style.height = list.offsetHeight + 'px';
+    panelBody.innerHTML = renderDetail(project);
+    panel.setAttribute('aria-hidden', 'false');
+    stage.classList.add('is-viewing-project');
+    panel.scrollTop = 0;
+    setTimeout(() => backBtn.focus({ preventScroll: true }), 520);
+  }
+
+  function closeProject() {
+    stage.classList.remove('is-viewing-project');
+    panel.setAttribute('aria-hidden', 'true');
+    // Libérer la hauteur après la fin de l'animation pour que
+    // le stage reprenne sa taille naturelle (utile en cas de resize)
+    setTimeout(() => { stage.style.height = ''; }, 500);
+  }
+
+  items.forEach(item => {
+    const key = item.dataset.project;
+    item.addEventListener('click', () => openProject(key));
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openProject(key);
+      }
+    });
+  });
+
+  backBtn.addEventListener('click', closeProject);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && stage.classList.contains('is-viewing-project')) {
+      closeProject();
+    }
   });
 </script>
 
