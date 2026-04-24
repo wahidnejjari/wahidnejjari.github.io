@@ -1003,21 +1003,29 @@ footer a:hover { text-decoration: underline; }
   // On cible UNIQUEMENT les sections référencées par les liens de la nav,
   // pour éviter que des id internes (highlightsStage, detailPanel, etc.)
   // perturbent la détection.
-  const navLinks = document.querySelectorAll('.sidebar-nav a[href^="#"]');
-  const navTargets = Array.from(navLinks)
+  // Le lien Home (href="#") est traité séparément, sinon il serait
+  // accidentellement surligné dès que current="" + '#' === son href.
+  const homeLink = document.querySelector('.sidebar-nav a[href="#"], .sidebar-nav a[href="#home"]');
+  const navLinks = Array.from(document.querySelectorAll('.sidebar-nav a[href^="#"]'))
+    .filter(a => a !== homeLink);
+  const navTargets = navLinks
     .map(a => {
       const id = a.getAttribute('href').slice(1);
       return id ? document.getElementById(id) : null;
     })
     .filter(Boolean);
 
+  function clearAllActive() {
+    if (homeLink) homeLink.classList.remove('active');
+    navLinks.forEach(a => a.classList.remove('active'));
+  }
+
   function updateActiveNav() {
     let current = '';
 
     // Cas 1 : on est tout en haut → Home
     if (window.scrollY < 100) {
-      const homeLink = document.querySelector('.sidebar-nav a[href="#"], .sidebar-nav a[href="#home"]');
-      navLinks.forEach(a => a.classList.remove('active'));
+      clearAllActive();
       if (homeLink) homeLink.classList.add('active');
       return;
     }
@@ -1035,8 +1043,12 @@ footer a:hover { text-decoration: underline; }
       });
     }
 
+    // On nettoie tout, puis on surligne uniquement la section détectée.
+    // Garde-fou : si current est vide, on ne surligne rien
+    // (évite que '#' + '' matche accidentellement le lien Home).
+    clearAllActive();
+    if (!current) return;
     navLinks.forEach(a => {
-      a.classList.remove('active');
       if (a.getAttribute('href') === '#' + current) a.classList.add('active');
     });
   }
