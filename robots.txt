@@ -23,4 +23,4 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-Sitemap: https://wahidnejjari.github.io/sitemap.xml
+Sitemap: https://hellowahid.com/sitemap.xml
